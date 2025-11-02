@@ -3,7 +3,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <getopt.h>
-#include "../../../../../../../../../../kernel/msm-4.19/include/uapi/linux/msm_ion.h"
+#include "../../../../../../../../../../../include/uapi/linux/msm_ion.h"
 #include <pthread.h>
 #include <stdbool.h>
 #include <stddef.h>
