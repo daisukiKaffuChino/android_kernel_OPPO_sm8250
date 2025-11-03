@@ -226,6 +226,9 @@ ifeq ($(KERNEL_BUILD), 1)
 	obj-y	+= wcd937x/
 	obj-y	+= wcd938x/
 	obj-y	+= bolero/
+#ifdef VENDOR_EDIT
+	obj-$(CONFIG_SND_SOC_MAX98937)	+= max989xx/
+#endif /* VENDOR_EDIT */
 endif
 # Module information used by KBuild framework
 obj-$(CONFIG_WCD9XXX_CODEC_CORE) += wcd_core_dlkm.o
