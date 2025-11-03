@@ -10,6 +10,8 @@
 
 #include "libfdt_internal.h"
 
+#define INT32_MAX	S32_MAX
+
 /*
  * Minimal sanity check for a read-only tree. fdt_ro_probe_() checks
  * that the given buffer contains what appears to be a flattened
