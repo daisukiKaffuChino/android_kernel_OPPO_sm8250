@@ -55,7 +55,6 @@
 #include <linux/fs.h>
 #include <linux/of_gpio.h>
 #include <asm/uaccess.h>
-#include <linux/uaccess.h>
 #include <linux/delay.h>
 #include <linux/string.h>
 #include "../include/oppo_fp_common.h"
