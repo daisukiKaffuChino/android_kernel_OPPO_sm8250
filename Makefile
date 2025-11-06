@@ -5,6 +5,9 @@ SUBLEVEL = 81
 EXTRAVERSION =
 NAME = "People's Front"
 
+# Android Kernel Platform
+export TARGET_PRODUCT=kona
+
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"
 # More info can be located in ./README
