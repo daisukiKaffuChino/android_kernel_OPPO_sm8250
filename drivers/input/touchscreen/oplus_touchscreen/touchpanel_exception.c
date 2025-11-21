@@ -74,53 +74,10 @@ static inline void tp_kfree(void **mem)
 	}
 }
 
-static int tp_olc_raise_exception(tp_excep_type excep_tpye, void *summary, unsigned int summary_size)
-{
-	struct exception_info *exp_info = NULL;
-	int ret = -1;
-
-	TPD_INFO("%s:enter,type:%d\n", __func__ , excep_tpye);
-
-	exp_info = tp_kzalloc(sizeof(struct exception_info), GFP_KERNEL);
-
-	if (!exp_info) {
-		return -ENOMEM;
-	}
-
-	if (excep_tpye > 0xfff) {
-		TPD_INFO("%s: excep_tpye:%d is beyond 0xfff\n", __func__ , excep_tpye);
-		goto free_exp;
-	}
-	exp_info->time = 0;
-	exp_info->id = (TP_RESERVED_ID << 20) | (TP_MODULE_ID << 12) | excep_tpye;
-	exp_info->pid = 0;
-	exp_info->exceptionType = EXCEPTION_KERNEL;
-	exp_info->faultLevel = 0;
-	exp_info->logOption = LOG_KERNEL | LOG_MAIN;
-	tp_memcpy(exp_info->module, sizeof(exp_info->module),
-		TP_MODULE_NAME, sizeof(TP_MODULE_NAME), sizeof(TP_MODULE_NAME));
-	tp_memcpy(exp_info->logPath, sizeof(exp_info->logPath),
-		TP_LOG_PATH, sizeof(TP_LOG_PATH), sizeof(TP_LOG_PATH));
-
-	tp_memcpy(exp_info->summary, sizeof(exp_info->summary),
-		summary, summary_size, summary_size);
-
-	ret = olc_raise_exception(exp_info);
-	if (ret) {
-		TPD_INFO("%s: raise fail, ret:%d\n", __func__ , ret);
-	}
-
-free_exp:
-	tp_kfree((void **)&exp_info);
-	return ret;
-}
-#else
 static  int tp_olc_raise_exception(tp_excep_type excep_tpye, void *summary, unsigned int summary_size)
 {
 	return 0;
 }
-#endif /* CONFIG_OPLUS_KEVENT_UPLOAD_DELETE */
-
 
 int tp_exception_report(void *tp_exception_data, tp_excep_type excep_tpye, void *summary, unsigned int summary_size)
 {
