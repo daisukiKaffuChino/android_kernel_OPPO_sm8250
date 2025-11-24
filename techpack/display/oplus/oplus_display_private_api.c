@@ -26,7 +26,7 @@
  */
 #include <linux/notifier.h>
 #include <linux/msm_drm_notify.h>
-#include <soc/oplus/device_info.h>
+#include <soc/oppo/device_info.h>
 #if defined(OPLUS_FEATURE_PXLW_IRIS5)
 #include <video/mipi_display.h>
 #include "iris/dsi_iris5_api.h"
@@ -3753,4 +3753,4 @@ static void __exit oplus_display_private_api_exit(void)
 module_init(oplus_display_private_api_init);
 module_exit(oplus_display_private_api_exit);
 MODULE_LICENSE("GPL v2");
-MODULE_AUTHOR("Hujie");
+MODULE_AUTHOR("Hujie <hujie@oplus.com>");
