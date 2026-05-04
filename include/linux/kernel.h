@@ -622,6 +622,11 @@ static inline char *hex_byte_pack_upper(char *buf, u8 byte)
 	return buf;
 }
 
+static inline int get_cached_platform_id(void)
+{
+    return -1;
+}
+
 #ifdef __GENKSYMS__
 extern int hex_to_bin(char ch);
 #else
