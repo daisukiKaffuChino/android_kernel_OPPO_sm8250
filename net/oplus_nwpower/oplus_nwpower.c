@@ -296,7 +296,7 @@ void bts_net_clear(void)
 }
 bool bts_net_exist(void)
 {
-        int platform_id = get_cached_platform_id();
+        int platform_id = -1;
         if (platform_id == LAGOON) {
                 bts_net_clear();
         }
